@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 env:
   WEBSITE_URL: "https://redhat-cop.github.io/automation-good-practices/"
-  ISSUE_TEMPLATE: ".github/workflows/check-broken-links.md"
+  ISSUE_TEMPLATE: ".github/workflows/issue_template_broken_link.md"
 
 jobs:
   check_links:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Run Broken Links Checker
-      run: npx broken-link-checker $WEBSITE_URL --ordered --recursive --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0"
+      run: npx broken-link-checker $WEBSITE_URL --ordered --recursive --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0" --exclude 
 
     - uses: actions/checkout@v3
       if: failure()
@@ -23,5 +23,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        filename: ".github/workflows/issue_template_broken_link.md"
+        filename: ${{ env.ISSUE_TEMPLATE }}
       if: failure()
