@@ -1,6 +1,6 @@
 ---
 title: Website Contains Broken Links
-labels: 'bug'
+labels: ''
 assignees: ''
 ---
 
