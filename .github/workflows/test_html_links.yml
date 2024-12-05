@@ -9,7 +9,7 @@ env:
   ISSUE_TEMPLATE: ".github/workflows/check-broken-links.md"
 
 jobs:
-  check:
+  check_links:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,5 +23,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        filename: ".github/workflows/check-broken-links.md"
+        filename: ".github/workflows/test_html_links.md"
       if: failure()
