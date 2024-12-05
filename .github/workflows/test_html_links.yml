@@ -23,5 +23,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        filename: ".github/workflows/test_html_links.md"
+        filename: ".github/workflows/issue_template_broken_link.md"
       if: failure()
