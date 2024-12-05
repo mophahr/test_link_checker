@@ -5,7 +5,7 @@ permissions:
   issues: write
 on:
   schedule:
-    - cron:  '12 1 * * 5'
+    - cron:  '0 16 * * *'
   workflow_dispatch:
 env:
   WEBSITE_URL: "https://redhat-cop.github.io/automation-good-practices/"
@@ -17,7 +17,7 @@ jobs:
 
     steps:
     - name: Run Broken Links Checker
-      run: npx broken-link-checker $WEBSITE_URL --ordered --recursive --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0" --exclude
+      run: npx broken-link-checker $WEBSITE_URL --ordered --recursive --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0" --exclude "https://opensource.org/licenses/BSD-2-Clause"
 
     - uses: actions/checkout@v3
       if: failure()
